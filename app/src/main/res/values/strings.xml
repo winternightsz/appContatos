@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">appContatos</string>
+    <string name="app_name">Contatos</string>
+    <string name="save_button_text">Salvar Contato</string>
+    <string name="update_button_text">Salvar Alterações</string>
+    <string name="delete_button_text">Excluir Contato</string>
+
+    <!-- Tipos de telefone para o Spinner -->
+    <string-array name="phone_types">
+        <item>Casa</item>
+        <item>Celular</item>
+        <item>Trabalho</item>
+    </string-array>
 </resources>

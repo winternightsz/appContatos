@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!-- Tipo de telefone (Casa, Celular, Trabalho) -->
+    <Spinner
+        android:id="@+id/phone_type_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:entries="@array/phone_types"
+        />
+
+
+    <!-- Número de telefone -->
+    <EditText
+        android:id="@+id/phone_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Número"
+        android:inputType="phone"
+        android:layout_weight="2"/>
+</LinearLayout>
