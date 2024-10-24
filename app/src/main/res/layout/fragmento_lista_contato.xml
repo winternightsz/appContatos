@@ -14,11 +14,10 @@
         android:text="CONTATOS"
         android:textStyle="bold"
         android:textSize="35sp"
-        android:textColor="@color/texto"
+        android:textColor="@color/fundo"
         android:gravity="center"
         android:background="@drawable/backgroud_titulo_principal"
         android:layout_marginBottom="30dp"
-        tools:ignore="MissingConstraints"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/recycler_view"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,19 +35,15 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Botão para adicionar novo contato -->
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_contact"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar Telefone"
-        android:background="@drawable/buttons_tela_adicionar"
-        android:layout_margin="20dp"
-        android:textColor="@color/texto"
-        android:textSize="18sp"
-        app:backgroundTint="@null"
-        app:layout_constraintTop_toBottomOf="@id/recycler_view"
+        android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_margin="16dp"
+        android:contentDescription="Adicionar Contato" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,21 +2,32 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fundo">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        android:orientation="vertical"
-        android:background="@color/fundo">
+        <TextView
+            android:id="@+id/titulo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NOVO CONTATO"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/fundo"
+            android:gravity="center"
+            android:background="@drawable/backgroud_titulo_principal"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/name_input"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Nome do contato -->
         <EditText
             android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="20dp"
             android:backgroundTint="#C391B5"
             android:foregroundTint="#FFFFFF"
             android:hint="Nome Completo"
@@ -25,7 +36,8 @@
             android:textColorHint="@color/itens"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/titulo2"
+            app:layout_constraintBottom_toTopOf="@id/phone_container"/>
 
     <!-- Container onde os números de telefone serão adicionados dinamicamente -->
     <LinearLayout
@@ -69,5 +81,5 @@
         android:textColor="@color/texto"
         android:textSize="18sp"
         app:backgroundTint="@null"/>
-    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

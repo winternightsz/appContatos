@@ -16,14 +16,15 @@
             android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#E8DBFD"
             android:hint="Nome Completo"
             android:inputType="textPersonName"
-            android:textColor="@color/texto"
-            android:textColorHint="@color/itens"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/itens"
+            android:textColorHint="@color/texto"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Spinner para selecionar o tipo de telefone -->
         <Spinner
@@ -40,14 +41,15 @@
             android:id="@+id/phone_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#E8DBFD"
             android:hint="Número de Telefone"
             android:inputType="phone"
-            android:textColor="@color/texto"
-            android:textColorHint="@color/itens"
-            app:layout_constraintTop_toBottomOf="@id/phone_type_spinner"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/itens"
+            android:textColorHint="@color/texto"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phone_type_spinner" />
 
         <!-- Botão para salvar as alterações -->
         <Button
