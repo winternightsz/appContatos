@@ -52,7 +52,7 @@ public class EditContatoFrag extends Fragment {
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                     requireContext(),
                     R.array.phone_types,
-                    android.R.layout.simple_spinner_item
+                    R.layout.spinner_personalizado
             );
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             phoneTypeSpinner.setAdapter(adapter);
