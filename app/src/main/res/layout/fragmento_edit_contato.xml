@@ -26,15 +26,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_spinner"
+            android:layout_margin="15dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/name_input"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
         <!-- Spinner para selecionar o tipo de telefone -->
         <Spinner
             android:id="@+id/phone_type_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/name_input"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:textAlignment="center"/>
+
+        </RelativeLayout>
 
         <!-- Campo para o número de telefone -->
         <EditText
