@@ -45,25 +45,29 @@ public class EditContatoFrag extends Fragment {
         Contato contato = dbHelper.obterContato(contatoId);
 
         if (contato != null) {
-            // Preenche os dados do contato no layout
+            // Preenche o nome do contato no layout
             nameInput.setText(contato.getNome());
 
-            // Pega o primeiro número de telefone e tipo (exemplo, já que pode ter múltiplos números)
+            // Configura o Spinner com os tipos de telefone
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                    requireContext(),
+                    R.array.phone_types,
+                    android.R.layout.simple_spinner_item
+            );
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            phoneTypeSpinner.setAdapter(adapter);
+
+            // Verifica se há telefones associados ao contato
             if (!contato.getTelefones().isEmpty()) {
+                // Se houver telefones, preenche o primeiro número de telefone e o tipo
                 String[] primeiroTelefone = contato.getTelefones().get(0);
                 phoneInput.setText(primeiroTelefone[1]);  // Posição 1 é o número de telefone
-                // Configura o Spinner com o tipo do primeiro telefone
-                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                        requireContext(),
-                        R.array.phone_types,
-                        android.R.layout.simple_spinner_item
-                );
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                phoneTypeSpinner.setAdapter(adapter);
-
-                // Seleciona o tipo de telefone correto
                 int spinnerPosition = adapter.getPosition(primeiroTelefone[0]); // Posição 0 é o tipo de telefone
                 phoneTypeSpinner.setSelection(spinnerPosition);
+            } else {
+                // Se não houver telefones, deixa o campo de telefone vazio e define o spinner no valor padrão
+                phoneInput.setText("");
+                phoneTypeSpinner.setSelection(0);  // Assumindo que o valor 0 seja "Selecione um tipo"
             }
         }
 
@@ -85,35 +89,33 @@ public class EditContatoFrag extends Fragment {
             return;
         }
 
-        // Validação do número de telefone
-        if (numeroTelefone.isEmpty()) {
-            Toast.makeText(getActivity(), "Preencha o número de telefone", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Validação do tipo de telefone (evitar valores padrão como "Selecione um tipo")
-        if (tipoTelefone.equals("Selecione um tipo")) {
-            Toast.makeText(getActivity(), "Selecione um tipo de telefone válido", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Validação de formato de telefone (exemplo simples de regex para números)
-        if (!numeroTelefone.matches("\\d{10,11}")) { // Aceita números com 10 ou 11 dígitos
-            Toast.makeText(getActivity(), "Número de telefone inválido: " + numeroTelefone, Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         BancoHelper dbHelper = new BancoHelper(getActivity());
 
-        // Atualiza o contato com o nome e o novo número de telefone
         List<String[]> telefones = new ArrayList<>();
-        telefones.add(new String[]{tipoTelefone, numeroTelefone});
 
+        // Se o usuário preencher o número de telefone, adiciona o número e o tipo à lista de telefones
+        if (!numeroTelefone.isEmpty()) {
+            // Validação do tipo de telefone
+            if (tipoTelefone.equals("Selecione um tipo")) {
+                Toast.makeText(getActivity(), "Selecione um tipo de telefone válido", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Validação de formato de telefone (exemplo simples de regex para números)
+            if (!numeroTelefone.matches("\\d{10,11}")) { // Aceita números com 10 ou 11 dígitos
+                Toast.makeText(getActivity(), "Número de telefone inválido: " + numeroTelefone, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Adiciona o telefone à lista
+            telefones.add(new String[]{tipoTelefone, numeroTelefone});
+        }
+
+        // Atualiza o contato com o nome e o(s) número(s) de telefone
         boolean isUpdated = dbHelper.atualizarContato(contatoId, nome, telefones);
 
         if (isUpdated) {
             Toast.makeText(getActivity(), "Contato atualizado com sucesso", Toast.LENGTH_SHORT).show();
-            // Verifica se o fragmento está adicionado à activity antes de voltar
             if (isAdded()) {
                 getParentFragmentManager().popBackStack();
             }
@@ -122,7 +124,6 @@ public class EditContatoFrag extends Fragment {
         }
     }
 
-
     // Método para excluir o contato
     private void deleteContact() {
         BancoHelper dbHelper = new BancoHelper(getActivity());
@@ -130,7 +131,6 @@ public class EditContatoFrag extends Fragment {
 
         if (isDeleted) {
             Toast.makeText(getActivity(), "Contato excluído com sucesso", Toast.LENGTH_SHORT).show();
-            // Verifica se o fragmento está adicionado à activity antes de voltar
             if (isAdded()) {
                 getParentFragmentManager().popBackStack();
             }

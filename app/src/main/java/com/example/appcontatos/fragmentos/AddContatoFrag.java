@@ -74,10 +74,10 @@ public class AddContatoFrag extends Fragment {
         }
 
         // Valida se pelo menos um telefone foi adicionado
-        if (phoneEntries.isEmpty()) {
-            Toast.makeText(getActivity(), "Adicione ao menos um telefone", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        //if (phoneEntries.isEmpty()) {
+        //    Toast.makeText(getActivity(), "Adicione ao menos um telefone", Toast.LENGTH_SHORT).show();
+        //    return;
+        // }
 
         // Insere o nome do contato no banco de dados
         BancoHelper dbHelper = new BancoHelper(getActivity());
