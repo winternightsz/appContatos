@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fundo">#210924</color>
+    <color name="botoes">#4B1946</color>
+    <color name="texto">#C391B5</color>
+    <color name="itens">#8C6892</color>
+    <color name="spinner">#98A1DE</color>
 </resources>
